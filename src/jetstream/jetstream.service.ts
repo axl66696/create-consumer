@@ -56,6 +56,7 @@ export class NatsJetStreamServer {
             'appStore.>',
             'auth.>',
             'forgetPasswordUser.>',
+            'userNews.>',
           ],
           retention: RetentionPolicy.Interest,
         },
@@ -127,6 +128,12 @@ export class NatsJetStreamServer {
           ack_policy: AckPolicy.Explicit,
           filter_subject: 'forgetPasswordUser.>',
           deliver_policy: DeliverPolicy.Last,
+        },
+        {
+          durable_name: 'userNews',
+          ack_policy: AckPolicy.Explicit,
+          filter_subject: 'userNews.>',
+          deliver_policy: DeliverPolicy.All,
         },
       ];
 
